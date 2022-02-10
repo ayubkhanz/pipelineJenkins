@@ -1,0 +1,32 @@
+import groovy.json.JsonOutput
+
+pipeline{
+    agent any
+    parameters{
+        string(name:'SPEC', defaultValue:'cypress/Integration/pom/*.spec.js', description:'The spec you want to run')
+        choice(name:'BROWSER', choices:['electron','Chrome','edge','firefox'])
+    }
+    options{
+        ansiColor:(xterm)
+    }
+    stages{
+        stage('Build'){
+            steps{
+                echo "Building"
+            }
+        }
+        stage('Testing'){
+            steps{
+                bat 'npm i',
+                bat 'npx cypress run --browser ${BROWSER} --spec ${SPEC}'            }
+        }
+        stage('Deploying'){
+            steps{
+                echo "Deploying"
+            }
+        }
+    }
+    post{
+        always(publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'cypress/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '']))
+    }
+}

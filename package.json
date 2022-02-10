@@ -1,0 +1,22 @@
+{
+  "name": "pipeline-jenkinsfile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run-Default":"cypress run --spec cypress/integration/**/**",
+    "run-Chrome":" npm run run-Default  -- --browser chrome",
+    "run-ChromeHeaded":" npm run run-Default  -- --headed --browser chrome",
+    "run-Firefox":" npm run run-Default  -- --browser firefox",
+    "run-Electron":" npm run run-Default  -- --browser electron"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.4.1",
+    "cypress-mochawesome-reporter": "^2.3.0",
+    "cypress-xpath": "^1.6.2"
+  }
+}
