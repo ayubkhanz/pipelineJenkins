@@ -3,7 +3,7 @@ import groovy.json.JsonOutput
 pipeline{
     agent any
     parameters{
-        string(name:"SPEC", defaultValue:"cypress/Integration/pom/*.spec.js", description:"The spec you want to run")
+        string(name:"SPEC", defaultValue:"cypress/integration/pom/*.spec.js", description:"The spec you want to run")
         choice(name:"BROWSER", choices:['electron','chrome','edge','firefox'])
     }
     options{
