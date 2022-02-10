@@ -4,7 +4,7 @@ pipeline{
     agent any
     parameters{
         string(name:"SPEC", defaultValue:"cypress/Integration/pom/*.spec.js", description:"The spec you want to run")
-        choice(name:"BROWSER", choices:['electron','Chrome','edge','firefox'])
+        choice(name:"BROWSER", choices:['electron','chrome','edge','firefox'])
     }
     options{
         ansiColor('xterm')
